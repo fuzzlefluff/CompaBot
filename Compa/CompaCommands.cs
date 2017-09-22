@@ -9,7 +9,7 @@ using DSharpPlus.Entities;
 
 namespace Compa //Matt's Branch
 {
-    public class CompaCommands //Adam Branch
+    public class CompaCommands
     {
         Random rnd;
         string[] jojourls =
