@@ -10,9 +10,9 @@ using System.Xml;
 using System.IO;
 using System.Net.Http;
 
-namespace Compa
+namespace Compa //Adam Branch
 {
-    public class CompaCommands //Adam Branch
+    public class CompaCommands 
     {
         Random rnd;
         string[] jojourls =
