@@ -334,5 +334,48 @@ namespace Compa //Matt's Branch
             await ctx.Channel.DeleteMessagesAsync(deleteQue);
             await ctx.RespondAsync($"I just deleted some stuff!");
         }
+        //Danbooru Search
+        [Command("hentai")]
+        public async Task hentai(CommandContext ctx, String input)
+        {
+            if (input.ToLower() == "compa")
+                await ctx.RespondAsync("Why are you looking for porn of me?");
+            var danbooruLink = "https://danbooru.donmai.us/posts.xml?tags=" + input + "&random=true&limit=1";
+            var client = new HttpClient();
+            var data = await client.GetStringAsync(danbooruLink);
+
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(data);
+            XmlNodeList node = doc.GetElementsByTagName("file-url");
+
+
+            await ctx.TriggerTypingAsync();
+            var embed = new DiscordEmbedBuilder
+            {
+                Title = "",
+                ImageUrl = "https://danbooru.donmai.us" + node[0].InnerText
+            };
+            await ctx.RespondAsync("", embed: embed);
+        }
+
+        [Command("nowa")]
+        public async Task tsunday(CommandContext ctx)
+        {
+            var danbooruLink = "https://danbooru.donmai.us/posts.xml?tags=noire&random=true&limit=1";
+            var client = new HttpClient();
+            var data = await client.GetStringAsync(danbooruLink);
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(data);
+            XmlNodeList node = doc.GetElementsByTagName("file-url");
+
+
+            await ctx.TriggerTypingAsync();
+            var embed = new DiscordEmbedBuilder
+            {
+                Title = "",
+                ImageUrl = "https://danbooru.donmai.us" + node[0].InnerText
+            };
+            await ctx.RespondAsync("", embed: embed);
+        }
     }
 }
