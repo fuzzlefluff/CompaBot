@@ -6,6 +6,9 @@ using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;
+using System.Xml;
+using System.IO;
+using System.Net.Http;
 
 namespace Compa //Matt's Branch
 {
