@@ -268,7 +268,7 @@ namespace Compa //Matt's Branch
             for (int i = 0; i < args.Length; i++)
             {
                 fullInputSpaces += args[i] + " ";
-                
+
             }
             fullInputSpaces = fullInputSpaces.ToUpper();
             for (int i = 0; i < fullInputSpaces.Length; i++)
@@ -313,7 +313,26 @@ namespace Compa //Matt's Branch
                 else { formatedString += ":question:"; }
             }
             await ctx.TriggerTypingAsync();
-            await ctx.RespondAsync($""+formatedString);
+            await ctx.RespondAsync($"" + formatedString);
+        }
+        //Deletes all user commands and Compa Responses
+        [Command("clean")]
+        public async Task clean(CommandContext ctx)
+        {
+            List<DiscordMessage> deleteQue = new List<DiscordMessage>(100);
+            IReadOnlyList<DiscordMessage> chatLog = new DiscordMessage[100];
+            chatLog = await ctx.Channel.GetMessagesAsync(100);
+            await ctx.TriggerTypingAsync();
+            await ctx.RespondAsync($"I just pulled 100 messages!");
+            await ctx.RespondAsync($""+chatLog[1].Content);
+            for (int i = 0; i < chatLog.Count; i++)
+            {
+                DiscordMessage checkMessage = chatLog[i];
+                if(checkMessage.Content[0] == '~'|| checkMessage.Content[0]=='-'|| checkMessage.Author.IsBot)
+                {deleteQue[i] = chatLog[i];}
+            }
+            await ctx.Channel.DeleteMessagesAsync(deleteQue);
+            await ctx.RespondAsync($"I just deleted some stuff!");
         }
     }
 }
