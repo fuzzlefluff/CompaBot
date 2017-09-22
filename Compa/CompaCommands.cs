@@ -146,7 +146,7 @@ namespace Compa //Matt's Branch
             {
                 ImageUrl = jojourls[rnd.Next(jojourls.Length)]
             };
-
+            await recentClean(ctx);
             await ctx.RespondAsync("", embed: embed);
         }
         [Command("lewd")]
@@ -158,7 +158,7 @@ namespace Compa //Matt's Branch
             {
                 ImageUrl = lewdurls[rnd.Next(lewdurls.Length)]
             };
-
+            await recentClean(ctx);
             await ctx.RespondAsync("", embed: embed);
         }
         [Command("picard"), Aliases("facepalm")]
@@ -170,7 +170,7 @@ namespace Compa //Matt's Branch
             {
                 ImageUrl = facepalurls[rnd.Next(lewdurls.Length)]
             };
-
+            await recentClean(ctx);
             await ctx.RespondAsync("", embed: embed);
         }
         //Waifu Rating
@@ -315,42 +315,56 @@ namespace Compa //Matt's Branch
                 else if (fullInputSpaces[i] == '9') { formatedString += ":nine:"; }
                 else { formatedString += ":question:"; }
             }
+            await recentClean(ctx);
             await ctx.TriggerTypingAsync();
             await ctx.RespondAsync($"" + formatedString);
         }
-      //Deletes all user commands and Compa Responses
-      /*  [Command("cleanAll")]
-        public async Task cleanAll (CommandContext ctx)
-        {
-            List<DiscordMessage> deleteQue = new List<DiscordMessage>(100);
-            IReadOnlyList<DiscordMessage> ReadOnlychatLog = new DiscordMessage[100];
-            List<DiscordMessage> editableChatLog = new List<DiscordMessage>(100);
-            ReadOnlychatLog = await ctx.Channel.GetMessagesAsync(100);
-            await ctx.TriggerTypingAsync();
-            await ctx.RespondAsync($"I just pulled 100 messages!");
-            for (int i = 0; i < ReadOnlychatLog.Count; i++)
-            {
-                if(ReadOnlychatLog[i].Content[0] == '~'|| ReadOnlychatLog[i].Content[0]=='-'|| ReadOnlychatLog[i].Author.IsBot)
-                { await ctx.Channel.DeleteMessageAsync(ReadOnlychatLog[i], "Someone called a clean comand"); }
-            }
-            await ctx.RespondAsync($"I just deleted some stuff!");
-        } */
-        //Deletes all user commands, leaves Compa Responses
-        [Command("cleanCommands"),Aliases("clean")]
+        //Deletes all user commands and Compa Responses
+         [Command("cleanAll")]
+          public async Task cleanAll (CommandContext ctx)
+          {
+              IList<DiscordMessage> deleteQue = new List<DiscordMessage>(100);
+              IReadOnlyList<DiscordMessage> ReadOnlychatLog = new DiscordMessage[100];
+              ReadOnlychatLog = await ctx.Channel.GetMessagesAsync(100);
+              await ctx.TriggerTypingAsync();
+              for (int i = 0; i < ReadOnlychatLog.Count; i++)
+              {
+                  try
+                  {
+                      if (ReadOnlychatLog[i].Content[0] == '~' || ReadOnlychatLog[i].Content[0] == '-'|| ReadOnlychatLog[i].Author.IsBot)
+                      { deleteQue.Add(ReadOnlychatLog[i]); }
+                  }
+                  catch (Exception ex) { }
+              }
+             await ctx.Channel.DeleteMessagesAsync(deleteQue,"Someone called a clean command");
+             await ctx.RespondAsync($"I just deleted any commands and any bot responses!");
+             ReadOnlychatLog = await ctx.Channel.GetMessagesAsync(1);
+             System.Threading.Thread.Sleep(1000);
+             await ctx.Channel.DeleteMessagesAsync(ReadOnlychatLog);
+            
+        } 
+        [Command("cleanCommands"), Aliases("clean")]
         public async Task cleanCommands(CommandContext ctx)
         {
             IList<DiscordMessage> deleteQue = new List<DiscordMessage>(100);
             IReadOnlyList<DiscordMessage> ReadOnlychatLog = new DiscordMessage[100];
             ReadOnlychatLog = await ctx.Channel.GetMessagesAsync(100);
             await ctx.TriggerTypingAsync();
-            await ctx.RespondAsync($"I just pulled 100 messages!");
+
             for (int i = 0; i < ReadOnlychatLog.Count; i++)
             {
-                if (ReadOnlychatLog[i].Content[0] == '~' || ReadOnlychatLog[i].Content[0] == '-')
-                { deleteQue.Add(ReadOnlychatLog[i]); }
+                try
+                {
+                    if (ReadOnlychatLog[i].Content[0] == '~' || ReadOnlychatLog[i].Content[0] == '-')
+                    { deleteQue.Add(ReadOnlychatLog[i]); }
+                }
+                catch (Exception ex) { }
             }
-            await ctx.Channel.DeleteMessagesAsync(deleteQue,"Someone called a clean command");
-            await ctx.RespondAsync($"I just deleted some stuff!");
+            await ctx.Channel.DeleteMessagesAsync(deleteQue, "Someone called a clean command");
+            await ctx.RespondAsync($"I just deleted any commands!");
+            ReadOnlychatLog = await ctx.Channel.GetMessagesAsync(1);
+            System.Threading.Thread.Sleep(1000);
+            await ctx.Channel.DeleteMessagesAsync(ReadOnlychatLog);
         }
         //Danbooru Search
         [Command("hentai")]
@@ -394,6 +408,37 @@ namespace Compa //Matt's Branch
                 ImageUrl = "https://danbooru.donmai.us" + node[0].InnerText
             };
             await ctx.RespondAsync("", embed: embed);
+        }
+        //Has Compa repeat whatever was inputed
+        [Command("say")]
+        public async Task say(CommandContext ctx, params string[] args)
+        {
+            string response = "";
+            for (int i = 0; i < args.Length; i++)
+            {
+                response += args[i] + " ";
+            }
+            await recentClean(ctx);
+            await ctx.TriggerTypingAsync();
+            await ctx.RespondAsync(response);
+        }
+        //Call this method when you want to delete the command calling it in discord chat
+        async private Task recentClean(CommandContext ctx)
+        {
+            IList<DiscordMessage> deleteQue = new List<DiscordMessage>(5);
+            IReadOnlyList<DiscordMessage> ReadOnlychatLog = new DiscordMessage[5];
+            ReadOnlychatLog = await ctx.Channel.GetMessagesAsync(5);
+            await ctx.TriggerTypingAsync();
+            for (int i = 0; i < ReadOnlychatLog.Count; i++)
+            {
+                try
+                {
+                    if (ReadOnlychatLog[i].Content[0] == '~' || ReadOnlychatLog[i].Content[0] == '-')
+                    { deleteQue.Add(ReadOnlychatLog[i]); }
+                }
+                catch (Exception ex) { }
+            }
+            await ctx.Channel.DeleteMessagesAsync(deleteQue);
         }
     }
 }
