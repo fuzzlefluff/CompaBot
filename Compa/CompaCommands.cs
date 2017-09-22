@@ -49,6 +49,12 @@ namespace Compa //Master Branch
 
         List<string> decisionOptions = new List<string>();
 
+        [Command("help")]
+        public async Task help(CommandContext ctx)
+        {
+            await ctx.TriggerTypingAsync();
+            await ctx.RespondAsync($"My list of commands is still being made because of lazyness! #blameAndy");
+        }
 
         [Command("hi")]
         public async Task Hi(CommandContext ctx)
