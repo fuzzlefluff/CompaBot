@@ -318,23 +318,38 @@ namespace Compa //Matt's Branch
             await ctx.TriggerTypingAsync();
             await ctx.RespondAsync($"" + formatedString);
         }
-        //Deletes all user commands and Compa Responses
-        [Command("clean")]
-        public async Task clean(CommandContext ctx)
+      //Deletes all user commands and Compa Responses
+      /*  [Command("cleanAll")]
+        public async Task cleanAll (CommandContext ctx)
         {
             List<DiscordMessage> deleteQue = new List<DiscordMessage>(100);
-            IReadOnlyList<DiscordMessage> chatLog = new DiscordMessage[100];
-            chatLog = await ctx.Channel.GetMessagesAsync(100);
+            IReadOnlyList<DiscordMessage> ReadOnlychatLog = new DiscordMessage[100];
+            List<DiscordMessage> editableChatLog = new List<DiscordMessage>(100);
+            ReadOnlychatLog = await ctx.Channel.GetMessagesAsync(100);
             await ctx.TriggerTypingAsync();
             await ctx.RespondAsync($"I just pulled 100 messages!");
-            await ctx.RespondAsync($""+chatLog[1].Content);
-            for (int i = 0; i < chatLog.Count; i++)
+            for (int i = 0; i < ReadOnlychatLog.Count; i++)
             {
-                DiscordMessage checkMessage = chatLog[i];
-                if(checkMessage.Content[0] == '~'|| checkMessage.Content[0]=='-'|| checkMessage.Author.IsBot)
-                {deleteQue[i] = chatLog[i];}
+                if(ReadOnlychatLog[i].Content[0] == '~'|| ReadOnlychatLog[i].Content[0]=='-'|| ReadOnlychatLog[i].Author.IsBot)
+                { await ctx.Channel.DeleteMessageAsync(ReadOnlychatLog[i], "Someone called a clean comand"); }
             }
-            await ctx.Channel.DeleteMessagesAsync(deleteQue);
+            await ctx.RespondAsync($"I just deleted some stuff!");
+        } */
+        //Deletes all user commands, leaves Compa Responses
+        [Command("cleanCommands"),Aliases("clean")]
+        public async Task cleanCommands(CommandContext ctx)
+        {
+            IList<DiscordMessage> deleteQue = new List<DiscordMessage>(100);
+            IReadOnlyList<DiscordMessage> ReadOnlychatLog = new DiscordMessage[100];
+            ReadOnlychatLog = await ctx.Channel.GetMessagesAsync(100);
+            await ctx.TriggerTypingAsync();
+            await ctx.RespondAsync($"I just pulled 100 messages!");
+            for (int i = 0; i < ReadOnlychatLog.Count; i++)
+            {
+                if (ReadOnlychatLog[i].Content[0] == '~' || ReadOnlychatLog[i].Content[0] == '-')
+                { deleteQue.Add(ReadOnlychatLog[i]); }
+            }
+            await ctx.Channel.DeleteMessagesAsync(deleteQue,"Someone called a clean command");
             await ctx.RespondAsync($"I just deleted some stuff!");
         }
         //Danbooru Search
