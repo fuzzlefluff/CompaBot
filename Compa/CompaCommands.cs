@@ -6,6 +6,9 @@ using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;
+using System.Xml;
+using System.IO;
+using System.Net.Http;
 
 namespace Compa
 {
@@ -168,6 +171,33 @@ namespace Compa
 
             await ctx.RespondAsync("", embed: embed);
         }
+
+
         //Waifu Rating
+
+
+
+        //Danbooru Search
+
+        [Command("hentai")]
+        public async Task hentai(CommandContext ctx, string input)
+        {
+            var danbooruLink = "https://danbooru.donmai.us/posts.xml?tags=" + input + "&random=true&limit=1";
+            var client = new HttpClient();
+            var data = await client.GetStringAsync(danbooruLink);
+                
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(data);
+            XmlNodeList node = doc.GetElementsByTagName("file-url");
+
+
+            await ctx.TriggerTypingAsync();
+            var embed = new DiscordEmbedBuilder
+            {
+                Title = "",
+                ImageUrl = "https://danbooru.donmai.us"+node[0].InnerText
+            };
+            await ctx.RespondAsync("", embed: embed);
+        }
     }
 }
