@@ -183,7 +183,7 @@ namespace Compa //Matt's Branch
                 fullInputSpaces += args[i] + " ";
                 fullInput += args[i];
             }
-            //Uppercase both strings
+            //Uppercase spaceless string
             fullInput = fullInput.ToUpper();
             if (fullInput == "MATTHEWPRINDLE" || fullInput == "MATTPRINDLE" || fullInput == "FUZZLEFLUFF" || fullInput == "FUZZLE")
             {
@@ -256,6 +256,64 @@ namespace Compa //Matt's Branch
                 await ctx.TriggerTypingAsync();
                 await ctx.RespondAsync($"I think " + fullInputSpaces + " is a " + temp + "/10 waifu");
             }
+        }
+        //say things in big text
+        [Command("bigtext")]
+        public async Task bigText(CommandContext ctx, params string[] args)
+        {
+            string fullInputSpaces = "";
+            string formatedString = "";
+            Int32 ratingValue = 0;
+            //get two strings, one with spaces and one without
+            for (int i = 0; i < args.Length; i++)
+            {
+                fullInputSpaces += args[i] + " ";
+                
+            }
+            fullInputSpaces = fullInputSpaces.ToUpper();
+            for (int i = 0; i < fullInputSpaces.Length; i++)
+            {
+                if (fullInputSpaces[i] == ' ') { formatedString += "   "; }
+                else if (fullInputSpaces[i] == 'A') { formatedString += ":regional_indicator_a:"; }
+                else if (fullInputSpaces[i] == 'B') { formatedString += ":regional_indicator_b:"; }
+                else if (fullInputSpaces[i] == 'C') { formatedString += ":regional_indicator_c:"; }
+                else if (fullInputSpaces[i] == 'D') { formatedString += ":regional_indicator_d:"; }
+                else if (fullInputSpaces[i] == 'E') { formatedString += ":regional_indicator_e:"; }
+                else if (fullInputSpaces[i] == 'F') { formatedString += ":regional_indicator_f:"; }
+                else if (fullInputSpaces[i] == 'G') { formatedString += ":regional_indicator_g:"; }
+                else if (fullInputSpaces[i] == 'H') { formatedString += ":regional_indicator_h:"; }
+                else if (fullInputSpaces[i] == 'I') { formatedString += ":regional_indicator_i:"; }
+                else if (fullInputSpaces[i] == 'J') { formatedString += ":regional_indicator_j:"; }
+                else if (fullInputSpaces[i] == 'K') { formatedString += ":regional_indicator_k:"; }
+                else if (fullInputSpaces[i] == 'L') { formatedString += ":regional_indicator_l:"; }
+                else if (fullInputSpaces[i] == 'M') { formatedString += ":regional_indicator_m:"; }
+                else if (fullInputSpaces[i] == 'N') { formatedString += ":regional_indicator_n:"; }
+                else if (fullInputSpaces[i] == 'O') { formatedString += ":regional_indicator_o:"; }
+                else if (fullInputSpaces[i] == 'P') { formatedString += ":regional_indicator_p:"; }
+                else if (fullInputSpaces[i] == 'Q') { formatedString += ":regional_indicator_q:"; }
+                else if (fullInputSpaces[i] == 'R') { formatedString += ":regional_indicator_r:"; }
+                else if (fullInputSpaces[i] == 'S') { formatedString += ":regional_indicator_s:"; }
+                else if (fullInputSpaces[i] == 'T') { formatedString += ":regional_indicator_t:"; }
+                else if (fullInputSpaces[i] == 'U') { formatedString += ":regional_indicator_u:"; }
+                else if (fullInputSpaces[i] == 'V') { formatedString += ":regional_indicator_v:"; }
+                else if (fullInputSpaces[i] == 'W') { formatedString += ":regional_indicator_w:"; }
+                else if (fullInputSpaces[i] == 'X') { formatedString += ":regional_indicator_x:"; }
+                else if (fullInputSpaces[i] == 'Y') { formatedString += ":regional_indicator_y:"; }
+                else if (fullInputSpaces[i] == 'Z') { formatedString += ":regional_indicator_z:"; }
+                else if (fullInputSpaces[i] == '0') { formatedString += ":zero:"; }
+                else if (fullInputSpaces[i] == '1') { formatedString += ":one:"; }
+                else if (fullInputSpaces[i] == '2') { formatedString += ":two:"; }
+                else if (fullInputSpaces[i] == '3') { formatedString += ":three:"; }
+                else if (fullInputSpaces[i] == '4') { formatedString += ":four:"; }
+                else if (fullInputSpaces[i] == '5') { formatedString += ":five:"; }
+                else if (fullInputSpaces[i] == '6') { formatedString += ":six:"; }
+                else if (fullInputSpaces[i] == '7') { formatedString += ":seven:"; }
+                else if (fullInputSpaces[i] == '8') { formatedString += ":eight:"; }
+                else if (fullInputSpaces[i] == '9') { formatedString += ":nine:"; }
+                else { formatedString += ":question:"; }
+            }
+            await ctx.TriggerTypingAsync();
+            await ctx.RespondAsync($""+formatedString);
         }
     }
 }
