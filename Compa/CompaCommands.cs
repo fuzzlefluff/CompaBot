@@ -46,6 +46,7 @@ namespace Compa //Matt's Branch
             "https://media.giphy.com/media/XsUtdIeJ0MWMo/giphy.gif",
             "http://www.reactiongifs.com/r/facepalm.gif"
          };
+        string unamusedurl = "https://i.redd.it/xhw1300w9ykz.gif";
 
         List<string> decisionOptions = new List<string>();
 
@@ -67,7 +68,8 @@ namespace Compa //Matt's Branch
         [Command("adam"), Aliases("crash", "blackmesa", "crashdmmy27")]
         public async Task Adam(CommandContext ctx)
         {
-            string[] names = { "Princess", "Master", "CFO of Crystal Mesa", "The One in Charge", "The Princes in Charge", "Hentai Lover" };
+            //string[] names = { "Princess", "Master", "CFO of Crystal Mesa", "The One in Charge", "The Princes in Charge", "Hentai Lover","The one who is specifically racist to Trey alone" };
+            string[] names = {"The one who is specifically racist to Trey alone" };
             rnd = new Random();
             await ctx.TriggerTypingAsync();
             await ctx.RespondAsync($"Did you mean {names[rnd.Next(names.Length)]}?");
@@ -83,7 +85,7 @@ namespace Compa //Matt's Branch
         [Command("andy"), Aliases("collector", "thecollector", "starwarsguy")]
         public async Task Andy(CommandContext ctx)
         {
-            string[] names = { "the greatest threat to Mankind", "a terrifying man with bottles", "the guy who needs to get over starwars", "The one who is never online", "Thank" };
+            string[] names = { "the greatest threat to Mankind", "a terrifying man with bottles", "the guy who needs to get over starwars", "The one who is never online", "The person who's fault this is" };
             rnd = new Random();
             await ctx.TriggerTypingAsync();
             await ctx.RespondAsync($"Did you mean {names[rnd.Next(names.Length)]}?");
@@ -92,6 +94,14 @@ namespace Compa //Matt's Branch
         public async Task Lawton(CommandContext ctx)
         {
             string[] names = { "the one who still hasn't beat zelda", "the only person who's bought amd" };
+            rnd = new Random();
+            await ctx.TriggerTypingAsync();
+            await ctx.RespondAsync($"Did you mean {names[rnd.Next(names.Length)]}?");
+        }
+        [Command("chase")]
+        public async Task chase(CommandContext ctx)
+        {
+            string[] names = { "the legendary gun collection?", "the only person here who makes any semblence of sense" };
             rnd = new Random();
             await ctx.TriggerTypingAsync();
             await ctx.RespondAsync($"Did you mean {names[rnd.Next(names.Length)]}?");
@@ -168,7 +178,20 @@ namespace Compa //Matt's Branch
             rnd = new Random();
             var embed = new DiscordEmbedBuilder
             {
-                ImageUrl = facepalurls[rnd.Next(lewdurls.Length)]
+                ImageUrl = facepalurls[rnd.Next(facepalurls.Length)]
+            };
+            await recentClean(ctx);
+            await ctx.RespondAsync("", embed: embed);
+        }
+        [Command("unamused")]
+        public async Task unamused(CommandContext ctx)
+        {
+            await bigText(ctx, "Compa is not amused");
+            await ctx.TriggerTypingAsync();
+            rnd = new Random();
+            var embed = new DiscordEmbedBuilder
+            {
+                ImageUrl = unamusedurl
             };
             await recentClean(ctx);
             await ctx.RespondAsync("", embed: embed);
