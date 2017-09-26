@@ -38,7 +38,7 @@ namespace Compa
             //Create the Commands
             commands = discord.UseCommandsNext(new CommandsNextConfiguration
             {
-                StringPrefix = "~"
+                StringPrefix = "-"
             });
 
             commands.RegisterCommands<CompaCommands>();
