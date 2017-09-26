@@ -151,7 +151,6 @@ namespace Compa //Matt's Branch
             await ctx.TriggerTypingAsync();
             await ctx.RespondAsync($"Compa added {input} to the list!");
         }
-
         [Command("decide")]
         public async Task Decide(CommandContext ctx)
         {
@@ -215,7 +214,6 @@ namespace Compa //Matt's Branch
         [Command("unamused")]
         public async Task unamused(CommandContext ctx)
         {
-            //await bigText(ctx, "Compa is not amused");
             rnd = new Random();
             var embed = new DiscordEmbedBuilder
             {
@@ -440,7 +438,7 @@ namespace Compa //Matt's Branch
             };
             await ctx.RespondAsync("", embed: embed);
         }
-
+        //dedicated noire porn search
         [Command("nowa")]
         public async Task tsunday(CommandContext ctx)
         {
