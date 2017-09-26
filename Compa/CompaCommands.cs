@@ -71,7 +71,7 @@ namespace Compa //Adam's Branch
             //Couple of actually lewd for the surprise
             "https://funnypictures4.fjcdn.com/funny_gifs/When+i+spy+something+lewd_8074ca_6039154.gif",
             "https://2static.fjcdn.com/pictures/Lewd_003fec_5868085.jpg",
-            "http://gifimage.net/lewd-gif-8/""
+            "http://gifimage.net/lewd-gif-8/"
          };
         string[] facepalurls =
          {
