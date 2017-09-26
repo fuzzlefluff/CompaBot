@@ -39,7 +39,39 @@ namespace Compa //Matt's Branch
         };
         string[] lewdurls =
          {
-            ""
+            "https://media.tenor.com/images/aae2940763e3af82279a705bd16d40ca/tenor.gif",
+            "https://media.tenor.com/images/7c025be15f96e01614489a760a6cdb10/tenor.gif",
+            "https://ih1.redbubble.net/image.373793548.4521/raf,750x1000,075,t,fafafa:ca443f4786.u1.jpg",
+            "https://t3.rbxcdn.com/332efc95879e9cf3452925e269e2abcd",
+            "https://derpicdn.net/img/2016/2/6/1081257/medium.png",
+            "http://gifimage.net/wp-content/uploads/2017/06/lewd-gif-4.gif",
+            "https://i.imgur.com/g4lvQqo.jpg",
+            "https://img00.deviantart.net/13ea/i/2017/099/5/6/no_lewd_stuff_pls____by_3ikal-db57s1c.png",
+            "https://pics.me.me/how-lewd-7974184.png",
+            "http://i.imgur.com/pzM5SlJ.jpg",
+            "http://i0.kym-cdn.com/photos/images/original/000/897/703/b97.png",
+            "http://i0.kym-cdn.com/photos/images/newsfeed/001/246/659/a3b.jpg",
+            "http://i0.kym-cdn.com/photos/images/newsfeed/001/079/523/b51.jpg",
+            "http://i0.kym-cdn.com/photos/images/newsfeed/000/901/438/5f4.jpg",
+            "http://i0.kym-cdn.com/photos/images/newsfeed/000/936/092/af7.jpg",
+            "http://i0.kym-cdn.com/photos/images/original/001/026/924/649.jpg",
+            "http://i0.kym-cdn.com/photos/images/original/001/068/466/57f.png",
+            "http://i0.kym-cdn.com/photos/images/original/000/905/339/2c4.png",
+            "http://i0.kym-cdn.com/photos/images/newsfeed/000/973/548/7cc.jpg",
+            "http://i0.kym-cdn.com/entries/icons/original/000/017/225/zAp2LzJ.jpg",
+            "http://i3.kym-cdn.com/photos/images/newsfeed/000/897/677/e82.jpg",
+            "http://i0.kym-cdn.com/photos/images/original/000/905/328/aca.jpg",
+            "https://memestatic.fjcdn.com/pictures/Lewd+polls+i+wanted+to+see+what+fj+was+like_b86a01_6224504.jpg",
+            "https://i.imgur.com/XAoIKUp.png",
+            "https://i.imgur.com/BAopHne.png",
+            "http://i0.kym-cdn.com/photos/images/newsfeed/000/821/014/59c.png",
+            "http://i0.kym-cdn.com/photos/images/newsfeed/000/690/931/412.png",
+            "http://i0.kym-cdn.com/photos/images/newsfeed/000/605/945/98d.gif",
+
+            //Couple of actually lewd for the surprise
+            "https://funnypictures4.fjcdn.com/funny_gifs/When+i+spy+something+lewd_8074ca_6039154.gif",
+            "https://2static.fjcdn.com/pictures/Lewd_003fec_5868085.jpg",
+            "http://gifimage.net/lewd-gif-8/"
          };
         string[] facepalurls =
          {
