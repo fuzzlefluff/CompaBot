@@ -14,6 +14,7 @@ namespace Compa //Adam's Branch
 {
     public class CompaCommands
     {
+        
         Random rnd;
         string[] jojourls =
         {
@@ -489,15 +490,6 @@ namespace Compa //Adam's Branch
             await ctx.TriggerTypingAsync();
             await ctx.RespondAsync(response);
         }
-
-        //Make Compa shutdown
-        [Command ("leave"), Aliases("shutdown", "exit")]
-        public async Task leave(CommandContext ctx)
-        {
-            await ctx.RespondAsync($"👋 Bye Bye!");
-            Environment.Exit(-1);
-        }
-
 
         //Call this method when you want to delete the command calling it in discord chat
         async private Task recentClean(CommandContext ctx)
