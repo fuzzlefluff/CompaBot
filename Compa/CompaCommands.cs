@@ -550,5 +550,18 @@ namespace Compa //Master Branch
             }
             return formatedString;
         }
+        [Command("offertradeagreement"), Aliases("tradeagreement","offertrade","trade")]
+        public async Task trade(CommandContext ctx)
+        {
+            await ctx.TriggerTypingAsync();
+            rnd = new Random();
+            var embed = new DiscordEmbedBuilder
+            {
+                ImageUrl = "https://i.imgur.com/iUzZkGG.png"
+            };
+           // await recentClean(ctx);
+            await ctx.RespondAsync("", embed: embed);
+        }
     }
 }
+
