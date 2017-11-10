@@ -77,7 +77,7 @@ namespace Compa //Adam's Branch
         string[] facepalurls =
          {
             "https://media.giphy.com/media/XsUtdIeJ0MWMo/giphy.gif",
-            "http://www.reactiongifs.com/r/facepalm.gif"
+            "http://www.reactiongifs.com/r/facepalm.gif",
             "https://imgur.com/rrpE79O"
          };
         string unamusedurl = "https://i.redd.it/xhw1300w9ykz.gif";
